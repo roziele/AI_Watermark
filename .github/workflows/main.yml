@@ -1,0 +1,15 @@
+name: Run Watermark Remover
+on: [push] # Запускать каждый раз, когда вы загружаете файлы
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Install dependencies
+        run: pip install opencv-python numpy
+      - name: Run script
+        run: python remove_watermarks.py
